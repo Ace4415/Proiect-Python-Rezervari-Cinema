@@ -1,0 +1,15 @@
+Index: main.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>print(\"Hello World\")\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/main.py b/main.py
+--- a/main.py	(revision c085d1a86d0cd68a187f36dc8996f2a52f599e3c)
++++ b/main.py	(date 1791323728550)
+@@ -1,1 +1,3 @@
+ print("Hello World")
++print("Am cariciul mare")
++print("Am cariciul mare")
+\ No newline at end of file
