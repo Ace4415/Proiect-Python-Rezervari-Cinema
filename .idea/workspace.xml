@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="ALL" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="d871ae20-c3c8-45dc-8b3d-6430b942c9df" name="Changes" comment="Initial commit - structura de baza">
+      <change afterPath="$PROJECT_DIR$/models/users.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="Tudor" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/Ace4415/Proiect-Python-Rezervari-Cinema",
+    "accountId": "303cbe34-5db4-4c97-a3a4-db8963b0b925"
+  }
+}]]></component>
+  <component name="NextEditCompletionFeaturesState">
+    <decayedCancelled>
+      <entry key="MS100" value="1.0068652959355777" />
+      <entry key="MS500" value="1.4824400259274269" />
+      <entry key="S2" value="2.6760336531751348" />
+      <entry key="S5" value="3.744351683331817" />
+      <entry key="S10" value="5.067747442440782" />
+      <entry key="S30" value="11.364554966529044" />
+      <entry key="S60" value="17.814380472511576" />
+      <entry key="M2" value="23.703005533744" />
+      <entry key="M5" value="28.747690808288414" />
+      <entry key="M10" value="30.77162340454664" />
+      <entry key="M15" value="31.490584190730715" />
+      <entry key="M30" value="32.233083543677566" />
+      <entry key="H1" value="32.61343335267136" />
+      <entry key="H2" value="32.80593241350008" />
+      <entry key="H4" value="32.902769238484396" />
+      <entry key="D1" value="32.983767439405696" />
+      <entry key="W1" value="32.997680389920966" />
+    </decayedCancelled>
+    <decayedSelected>
+      <entry key="MS100" value="1.0299316189341051E-48" />
+      <entry key="MS500" value="2.526746531673256E-10" />
+      <entry key="S2" value="0.003986946606173938" />
+      <entry key="S5" value="0.10971251426292038" />
+      <entry key="S10" value="0.3312287944350859" />
+      <entry key="S30" value="0.6918989868057926" />
+      <entry key="S60" value="0.8318046566386801" />
+      <entry key="M2" value="0.9120332541298483" />
+      <entry key="M5" value="0.9638384988843332" />
+      <entry key="M10" value="0.9817527687174267" />
+      <entry key="M15" value="0.9877978801645365" />
+      <entry key="M30" value="0.9938802141931071" />
+      <entry key="H1" value="0.9969354112444331" />
+      <entry key="H2" value="0.9984665298568767" />
+      <entry key="H4" value="0.999232970761512" />
+      <entry key="D1" value="0.9998721209179062" />
+      <entry key="W1" value="0.9999817305584139" />
+    </decayedSelected>
+    <decayedShown>
+      <entry key="MS100" value="0.9264895407229153" />
+      <entry key="MS500" value="1.3635167901675456" />
+      <entry key="S2" value="2.3046334576433565" />
+      <entry key="S5" value="3.4611189824662576" />
+      <entry key="S10" value="5.057243864845451" />
+      <entry key="S30" value="11.79880399647799" />
+      <entry key="S60" value="18.45477084103998" />
+      <entry key="M2" value="24.491812523926274" />
+      <entry key="M5" value="29.652950912268718" />
+      <entry key="M10" value="31.72223526475396" />
+      <entry key="M15" value="32.45718376048492" />
+      <entry key="M30" value="33.21613878780386" />
+      <entry key="H1" value="33.604898479186986" />
+      <entry key="H2" value="33.801649179177396" />
+      <entry key="H4" value="33.90062364998387" />
+      <entry key="D1" value="33.983409287873954" />
+      <entry key="W1" value="33.99762921183808" />
+    </decayedShown>
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "git-widget-placeholder": "Roni",
+    "node.js.selected.package.tslint": "(autodetect)"
+  }
+}]]></component>
+  <component name="TaskManager">
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
