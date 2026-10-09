@@ -1,5 +1,5 @@
-import hashing as hash
-import userdb as user
+from auth import hashing as hash
+from auth import userdb as user
 
 user.init_db()
 DEFAULT_ADMIN_PASS = "admin123"
