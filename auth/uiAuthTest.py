@@ -51,7 +51,7 @@ class LoginPage(ctk.CTkFrame):
         self.user_entry.pack(pady=8, fill="x", padx=420)
 
         self.pass_entry = ctk.CTkEntry(
-            self, placeholder_text="Password", show="*", placeholder_text_color="#888888"
+            self, placeholder_text="Password",placeholder_text_color="#888888", show="*"
         )
         self.pass_entry.pack(pady=8, fill="x", padx=420)
 
@@ -78,6 +78,7 @@ class LoginPage(ctk.CTkFrame):
     def on_show(self):
         self.error_label.configure(text="")
         self.pass_entry.delete(0, "end")
+        self.pass_entry.configure(show="*")
 
     def handle_login(self):
         username = self.user_entry.get().strip()
@@ -155,7 +156,10 @@ class RegisterPage(ctk.CTkFrame):
         self.status_label.configure(text="")
         self.user_entry.delete(0, "end")
         self.pass_entry.delete(0, "end")
+        self.pass_entry.configure(show="*")
+
         self.confirm_entry.delete(0, "end")
+        self.confirm_entry.configure(show="*")
 
     def handle_register(self):
         username = self.user_entry.get().strip()
@@ -227,6 +231,13 @@ class ChangePasswordPage(ctk.CTkFrame):
             command=self.handle_change_password,
         )
         self.save_btn.pack(pady=10, fill="x", padx=420)
+
+    def on_show(self):
+        self.msg_label.configure(text="")
+        self.new_pass_entry.delete(0, "end")
+        self.new_pass_entry.configure(show="*")
+        self.confirm_pass_entry.delete(0, "end")
+        self.confirm_pass_entry.configure(show="*")
 
     def handle_change_password(self):
         new_pwd = self.new_pass_entry.get()
