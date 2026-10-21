@@ -5,6 +5,65 @@ ctk.set_appearance_mode("dark")
 ctk.set_default_color_theme("dark-blue")
 
 
+class PasswordEntry(ctk.CTkFrame):
+
+    def __init__(self, master=None, placeholder_text="Password", **kwargs):
+        super().__init__(master, fg_color="transparent")
+
+        self.is_password_visible = False
+
+        self.entry = ctk.CTkEntry(self, placeholder_text=placeholder_text, **kwargs)
+        self.entry.pack(side="left", fill="x", expand=True)
+
+        self.toggle_btn = ctk.CTkButton(
+            self,
+            text="👁",
+            width=36,
+            fg_color="transparent",
+            hover_color="#333333",
+            command=self.toggle_visibility,
+        )
+        self.toggle_btn.pack(side="right", padx=(5, 0))
+
+        self.entry.bind("<FocusIn>", self._on_focus_in)
+        self.entry.bind("<FocusOut>", self._on_focus_out)
+
+    def _on_focus_in(self, event=None):
+        if not self.is_password_visible:
+            self.entry.configure(show="*")
+
+    def _on_focus_out(self, event=None):
+        if not self.entry.get() or self.is_password_visible:
+            self.entry.configure(show="")
+
+    def toggle_visibility(self):
+        self.is_password_visible = not self.is_password_visible
+
+        if self.is_password_visible:
+            self.entry.configure(show="")
+            self.toggle_btn.configure(text="👁")
+        else:
+            if self.entry.get():
+                self.entry.configure(show="*")
+            self.toggle_btn.configure(text="🚫")
+
+    def get(self):
+        return self.entry.get()
+
+    def reset(self):
+        self.is_password_visible = False
+        self.toggle_btn.configure(text="👁")
+        self.entry.delete(0, "end")
+        self.entry.configure(show="")
+        if hasattr(self.entry, "_activate_placeholder"):
+            self.entry._activate_placeholder()
+
+def reset_entry(entry: ctk.CTkEntry):
+    entry.delete(0, "end")
+    if hasattr(entry, "_activate_placeholder"):
+        entry._activate_placeholder()
+
+
 class CinemaApp(ctk.CTk):
 
     def __init__(self):
@@ -42,19 +101,15 @@ class LoginPage(ctk.CTkFrame):
         self.controller = controller
 
         self.label = ctk.CTkLabel(
-
             self, text="Movieplex++", font=("Arial", 22, "bold"), text_color="red"
         )
         self.label.pack(pady=(20, 15))
 
-        self.user_entry = ctk.CTkEntry(self, placeholder_text="Username", placeholder_text_color="#888888")
+        self.user_entry = ctk.CTkEntry(self, placeholder_text="Username")
         self.user_entry.pack(pady=8, fill="x", padx=420)
 
-        self.pass_entry = ctk.CTkEntry(
-            self, placeholder_text="Password",placeholder_text_color="#888888", show="*"
-        )
+        self.pass_entry = PasswordEntry(self, placeholder_text="Password")
         self.pass_entry.pack(pady=8, fill="x", padx=420)
-
 
         self.error_label = ctk.CTkLabel(
             self, text="", text_color="red", font=("Arial", 12)
@@ -77,8 +132,9 @@ class LoginPage(ctk.CTkFrame):
 
     def on_show(self):
         self.error_label.configure(text="")
-        self.pass_entry.delete(0, "end")
-        self.pass_entry.configure(show="*")
+        reset_entry(self.user_entry)
+        self.pass_entry.reset()
+        self.focus_set()
 
     def handle_login(self):
         username = self.user_entry.get().strip()
@@ -105,6 +161,7 @@ class LoginPage(ctk.CTkFrame):
         else:
             self.error_label.configure(text="Username or password incorrect")
 
+
 class RegisterPage(ctk.CTkFrame):
 
     def __init__(self, parent, controller):
@@ -116,18 +173,14 @@ class RegisterPage(ctk.CTkFrame):
         )
         self.label.pack(pady=(20, 15))
 
-        self.user_entry = ctk.CTkEntry(
-            self, placeholder_text="Username", placeholder_text_color="#888888"
-        )
+        self.user_entry = ctk.CTkEntry(self, placeholder_text="Username")
         self.user_entry.pack(pady=8, fill="x", padx=420)
 
-        self.pass_entry = ctk.CTkEntry(
-            self, placeholder_text="Password", show="*", placeholder_text_color="#888888"
-        )
+        self.pass_entry = PasswordEntry(self, placeholder_text="Password")
         self.pass_entry.pack(pady=8, fill="x", padx=420)
 
-        self.confirm_entry = ctk.CTkEntry(
-            self, placeholder_text="Confirm Password", show="*", placeholder_text_color="#888888"
+        self.confirm_entry = PasswordEntry(
+            self, placeholder_text="Confirm Password"
         )
         self.confirm_entry.pack(pady=8, fill="x", padx=420)
 
@@ -154,12 +207,10 @@ class RegisterPage(ctk.CTkFrame):
 
     def on_show(self):
         self.status_label.configure(text="")
-        self.user_entry.delete(0, "end")
-        self.pass_entry.delete(0, "end")
-        self.pass_entry.configure(show="*")
-
-        self.confirm_entry.delete(0, "end")
-        self.confirm_entry.configure(show="*")
+        reset_entry(self.user_entry)
+        self.pass_entry.reset()
+        self.confirm_entry.reset()
+        self.focus_set()
 
     def handle_register(self):
         username = self.user_entry.get().strip()
@@ -174,7 +225,7 @@ class RegisterPage(ctk.CTkFrame):
 
         if pwd != confirm:
             self.status_label.configure(
-                text="Passowrds are not the same", text_color="red"
+                text="Passwords are not the same", text_color="red"
             )
             return
 
@@ -208,13 +259,13 @@ class ChangePasswordPage(ctk.CTkFrame):
         )
         self.info_label.pack(pady=(0, 15))
 
-        self.new_pass_entry = ctk.CTkEntry(
-            self, placeholder_text="New password" , show="*", placeholder_text_color="#888888"
+        self.new_pass_entry = PasswordEntry(
+            self, placeholder_text="New password"
         )
         self.new_pass_entry.pack(pady=8, fill="x", padx=420)
 
-        self.confirm_pass_entry = ctk.CTkEntry(
-            self, placeholder_text="Confirm new password", show="*", placeholder_text_color="#888888"
+        self.confirm_pass_entry = PasswordEntry(
+            self, placeholder_text="Confirm new password"
         )
         self.confirm_pass_entry.pack(pady=8, fill="x", padx=420)
 
@@ -234,10 +285,9 @@ class ChangePasswordPage(ctk.CTkFrame):
 
     def on_show(self):
         self.msg_label.configure(text="")
-        self.new_pass_entry.delete(0, "end")
-        self.new_pass_entry.configure(show="*")
-        self.confirm_pass_entry.delete(0, "end")
-        self.confirm_pass_entry.configure(show="*")
+        self.new_pass_entry.reset()
+        self.confirm_pass_entry.reset()
+        self.focus_set()
 
     def handle_change_password(self):
         new_pwd = self.new_pass_entry.get()
@@ -254,6 +304,7 @@ class ChangePasswordPage(ctk.CTkFrame):
         new_hash = hashing.hash_passwd(new_pwd)
         userdb.update_password(self.controller.current_user, new_hash)
         self.controller.show_frame(DashboardPage)
+
 
 class DashboardPage(ctk.CTkFrame):
 
